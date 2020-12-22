@@ -9,14 +9,14 @@ class QuickSort{
     }
     fun splitPartition(input: Array<Int>, left: Int, right: Int): Int{
       var pivotValue = input[left]
-      var l: Int = left
-      var r: Int = right 
+      var l: Int = left+1
+      var r: Int = right
       while(l<r){
-        while(input[l] <= pivotValue && l < input.size) l++ 
-        while(input[r] >= pivotValue && r > -1) r--
+        while(input[l] < pivotValue) l++ 
+        while(input[r] > pivotValue) r--
         switch(input, l, r)
       }
-      switch(input, r, l)
+      switch(input, l, r)
       switch(input, left, r)
       return r
     }
@@ -38,9 +38,7 @@ fun printArray(input: Array<Int>){
 
 fun main(){
   val input: Array<Int> = arrayOf<Int>(5,3,1,9,8,2,4,7)
-  println("Unsorted array")
   printArray(input)
-  println("Sorted array")
   QuickSort.sort(input, 0, input.size-1)
   printArray(input)
 }
