@@ -65,6 +65,7 @@
         </configuration>
       </plugin>     
       <plugin>
+      <!-- The maven-assembly-plugin combines all dependencies and specified jars into a single one. ie -jar-with-dependencies -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
         <version>2.6</version>

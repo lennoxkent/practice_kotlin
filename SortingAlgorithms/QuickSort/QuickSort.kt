@@ -39,21 +39,12 @@ class QuickSort{
       input[b] = input[a]
       input[a] = temp
     }
+    fun printArray(input: Array<Int>){
+      for(i in input.indices){
+        val displayValue: String = input[i].toString() + " "
+        print(displayValue)
+      }
+      println()
+    }
   }
-}
-
-fun printArray(input: Array<Int>){
-  for(i in input.indices){
-    val displayValue: String = input[i].toString() + " "
-    print(displayValue)
-  }
-  println()
-}
-
-fun main(){
-  val input: Array<Int> = arrayOf<Int>(5,3,1,9,8,2,4,7)
-  //val input: Array<Int> = arrayOf<Int>(2,3,1,4)
-  //printArray(input)
-  QuickSort.sort(input, 0, input.size-1)
-  printArray(input)
 }
