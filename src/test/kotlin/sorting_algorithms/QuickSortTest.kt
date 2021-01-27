@@ -1,10 +1,9 @@
-
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 
-class BasicJunit5Test {
+class QuickSortTest {
     companion object {
         @BeforeAll
         @JvmStatic
@@ -23,7 +22,10 @@ class BasicJunit5Test {
     fun simpleTestCase() {
         println("A simple test case.")
 
-        val numberTwo = 2
-        assertEquals(2, numberTwo)
+        val input: Array<Int> = arrayOf<Int>(5,3,1,9,8,2,4,7)
+        //val input: Array<Int> = arrayOf<Int>(2,3,1,4)
+      //  QuickSort.sort(input, 0, input.size-1)
+      //  QuickSort.printArray(input)
+      // assertEquals(2, numberTwo)
     }
 }
