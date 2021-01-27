@@ -6,6 +6,7 @@
 
   <properties>
     <kotlin.version>1.4.0</kotlin.version>
+    <junit-jupiter.version>5.4.2</junit-jupiter.version>
   </properties>
 
   <dependencies>
@@ -14,6 +15,21 @@
       <artifactId>kotlin-stdlib</artifactId>
       <version>${kotlin.version}</version>
     </dependency>
+
+    <!-- Testing Dependencies -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${junit-jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>${junit-jupiter.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -21,12 +37,11 @@
     <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
 
     <plugins>
-      <!-- The kotlin-maven-plugin compiles Kotlin sources and modules -->
+      <!-- kotlin-maven-plugin compiles Kotlin sources and modules -->
       <plugin>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-maven-plugin</artifactId>
         <version>${kotlin.version}</version>
-
         <executions>
           <execution>
             <id>compile</id>
@@ -34,7 +49,6 @@
               <goal>compile</goal>
             </goals>
           </execution>
-
           <execution>
             <id>test-compile</id>
             <goals>
@@ -44,6 +58,7 @@
         </executions>
       </plugin>
 
+      <!-- maven-jar-plugin builds jars -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
@@ -64,8 +79,8 @@
           </execution>
         </configuration>
       </plugin>     
+      <!-- maven-assembly-plugin combines all dependencies and specified jars into a single one. ie -jar-with-dependencies -->
       <plugin>
-      <!-- The maven-assembly-plugin combines all dependencies and specified jars into a single one. ie -jar-with-dependencies -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
         <version>2.6</version>
@@ -87,7 +102,11 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.22.1</version>
+      </plugin>
     </plugins>
   </build>
-
 </project>
