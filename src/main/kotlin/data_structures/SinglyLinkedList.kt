@@ -1,9 +1,9 @@
-object SingleyLinkedList {
+object SinglyLinkedList {
   class Node(val name: String = "default") {
     var next: Node? = null
   }
 
-  class LinkedList(){
+  class List(){
     var start: Node? = null
     var head: Node? = null
 
@@ -43,17 +43,5 @@ object SingleyLinkedList {
       }
       previous?.next = null
     }
-  }
-
-  fun main(){
-    var ll: LinkedList = LinkedList()
-    ll.add("apple")
-    ll.add("bannana")
-    ll.add("carrot")
-    ll.printNodes()
-
-    println("removing last node")
-    ll.removeLastNode()
-    ll.printNodes()
   }
 }
