@@ -1,4 +1,4 @@
-object DoubleyLinkedList {
+object DoublyLinkedList {
   class Node(var name: String){
     var previousNode: Node? = null
     var nextNode: Node? = null
@@ -74,24 +74,5 @@ object DoubleyLinkedList {
         start = tempNode
       }
     }
-  }
-
-  fun main(){
-    var dll: DoublyLinkedList = DoublyLinkedList()
-    dll.add("apple")
-    dll.add("bannana")
-    dll.add("carrot")
-    dll.printNodeNames()
-
-    println("Print Reverse order of Nodes")
-    dll.printReverseNodeNames()
-
-    println("Delete Last Node")
-    dll.deleteLastNode()
-    dll.printNodeNames()
-
-    println("Delete first Node")
-    dll.deleteFirstNode();
-    dll.printNodeNames()
   }
 }
