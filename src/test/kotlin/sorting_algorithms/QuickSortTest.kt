@@ -10,6 +10,7 @@ class QuickSortTest {
     QuickSort.sort(input, 0, input.size-1)
     assertArrayEquals(input, input)
   }
+  @Test
   fun textBookCase(){
     val input: Array<Int> = arrayOf<Int>(5,3,1,9,8,2,4,7)
     val expected: Array<Int> = arrayOf<Int>(1,2,3,4,5,7,8,9)
