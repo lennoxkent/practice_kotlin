@@ -18,7 +18,7 @@ class QuickSort{
       var q: Int = left 
 
       while(l<right){
-        if(input[q] < input[right]){
+        if(input[l] < input[right]){
           swap(input, q, l)
           q++
         }
