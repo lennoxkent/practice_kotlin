@@ -19,4 +19,13 @@ class QuickSortReverseTest {
     QuickSortReverse.sort(input, 0, input.size-1)
     assertArrayEquals(expected, input)
   }
+
+  @Test
+  fun duplicates(){ 
+    val input: Array<Int> = arrayOf<Int>(9, 5, 3, 1, 9, 8, 8, 2, 4, 9, 7)
+    val expected: Array<Int> = arrayOf<Int>(9, 9, 9, 8, 8, 7, 5, 4, 3, 2, 1)
+
+    QuickSortReverse.sort(input, 0, input.size-1)
+    assertArrayEquals(expected, input)
+  }
 }
