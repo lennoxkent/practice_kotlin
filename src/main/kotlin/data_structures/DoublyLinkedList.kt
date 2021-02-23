@@ -74,5 +74,23 @@ object DoublyLinkedList {
         start = tempNode
       }
     }
+    
+    companion object{
+      fun assert(expected: Array<String>, real: DoublyLinkedList){
+        var current: Node? = real.start
+
+        for(v in expected){
+          if(current == null){
+            throw Exception("Missmatch. Number of elements not equal")
+          }
+          else if(current.name != v){
+            throw Exception("Missmatch. Expected $v, got $current.name")
+          }
+          else{
+            current = current.nextNode
+          }
+        }
+      }
+    }
   }
 }
