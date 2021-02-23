@@ -43,5 +43,22 @@ object SinglyLinkedList {
       }
       previous?.next = null
     }
+
+    companion object{
+      fun assert(expected: Array<String>, real: List){
+        var current: Node? = real.start
+        for(v in expected){
+          if(current == null){
+            throw Exception("Missmatch between expected and real")
+          }
+          else if(current.name != v){
+            throw Exception("Missmatch. Expected: $v, got $current.name")
+          }
+          else{
+            current = current.next
+          }
+        }
+      }
+    }
   }
 }
