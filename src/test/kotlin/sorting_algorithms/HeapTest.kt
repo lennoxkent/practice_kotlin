@@ -8,6 +8,6 @@ class HeapTest {
     val expected: Array<Int> = arrayOf<Int>(10,5,7,4,2,1)
 
     Heap.constructHeapBottomUp(input)
-    // assertArrayEquals(expected, input)
+    assertArrayEquals(expected, input)
   }
 }
