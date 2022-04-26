@@ -5,25 +5,32 @@ class Heap{
   companion object {
     fun constructHeapBottomUp(input: Array<Int>){
       // using n determine if the input array could be a valid heap
-
       val lastParentIndex: Int = floor(input.size/(2.toDouble())).toInt() -1 // -1: index from 0
-      val n: Int = input.size
-
-      // up
+      val last: Int = input.size - 1
+     
       for(i in lastParentIndex downTo 0 ){
-        val li: Int = 2*i + 1
-        val ri: Int = li + 1
-        if(li < n && input[li] > input[i]) swap(input, li, i)
-        if(ri < n && input[ri] > input[i]) swap(input, ri, i)
+        var k: Int = i 
+        val v: Int = input[i]
+        var isHeap: Boolean = false
+        while(!isHeap && 2*k <= last){
+          var j: Int = 2*k 
+          if(j < last){
+            if (input[j] < input[(j+1)]){
+              j = j + 1
+            }
+            if(v >= input[j]){
+              isHeap = true
+            }
+            else{
+              input[k] = input[j]
+              k = j
+            }
+          }
+        }
+        input[k]=v
       }
 
-      // down
-      for(i in 0..lastParentIndex) {
-        val li: Int = 2*i + 1
-        val ri: Int = li + 1
-        if(li < n && input[li] <= input[i]) swap(input, li, i)
-        if(ri < n && input[ri] <= input[i]) swap(input, ri, i)
-      }
+      for (element in input) { println(element) }
     }
 
     fun swap(input: Array<Int>, a: Int, b: Int){
