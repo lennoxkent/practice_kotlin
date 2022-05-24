@@ -8,35 +8,29 @@ class Heap{
       val lastParentIndex: Int = floor(input.size/(2.toDouble())).toInt() -1 // -1: index from 0
       val last: Int = input.size - 1
      
-      for(i in lastParentIndex downTo 0 ){
-        var k: Int = i 
-        val v: Int = input[i]
+      for(p in lastParentIndex downTo 0 ){
+        var currentParent: Int = p
+        val currentParentValue: Int = input[p]
         var isHeap: Boolean = false
-        while(!isHeap && 2*k <= last){
-          var j: Int = 2*k 
-          if(j < last){
-            if (input[j] < input[(j+1)]){
-              j = j + 1
+
+        while(!isHeap && 2*currentParent <= last){
+          var currentChild: Int = 2*currentParent
+          if(currentChild < last){
+            if (input[currentChild] < input[(currentChild +1)]){
+              currentChild = currentChild + 1
             }
-            if(v >= input[j]){
+            if(currentParentValue >= input[currentChild]){
               isHeap = true
             }
             else{
-              input[k] = input[j]
-              k = j
+              input[currentParent] = input[currentChild]
+              currentParent = currentChild
             }
           }
         }
-        input[k]=v
+        input[currentParent] = currentParentValue
       }
-
-      for (element in input) { println(element) }
+      // for (element in input) { println(element) }
     }
-
-    fun swap(input: Array<Int>, a: Int, b: Int){
-      val temp: Int = input[b]
-      input[b] = input[a]
-      input[a] = temp
-    } 
   }
 }
