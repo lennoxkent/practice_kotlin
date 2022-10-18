@@ -30,3 +30,6 @@ target/
 
 # vim temp files
 *.swp 
+
+# Intellij file
+.idea/
