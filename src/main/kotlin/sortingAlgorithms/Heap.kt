@@ -1,8 +1,12 @@
 import kotlin.math.floor
+import kotlin.math.log2
+import kotlin.math.ceil
 
 class Heap{
   companion object {
     fun constructHeapBottomUp(input :Array<Int>){
+      if (!isEssentiallyCompleteHeap(input)) throw IllegalArgumentException("Name required")
+
       // Using n determine if the input array could be a valid heap
       val n :Int = input.size
       val lastParentIndex: Int = floor(n/(2.toDouble())).toInt() -1 // -1: index from 0
@@ -28,12 +32,18 @@ class Heap{
         }
       }
     }
+
+    fun isEssentiallyCompleteHeap(input: Array<Int>): Boolean {
+      val complete = log2((input.size + 1).toDouble())
+      val essentiallyComplete =  log2((input.size + 2).toDouble())
+      return ceil(complete) == floor(complete) || ceil(essentiallyComplete) == floor(essentiallyComplete)
+    }
+
     fun swap(a :Int, b :Int, input :Array<Int>){
       val temp :Int = input[a]
       input[a] = input[b]
       input[b] = temp
     }
-
   }
 }
 
