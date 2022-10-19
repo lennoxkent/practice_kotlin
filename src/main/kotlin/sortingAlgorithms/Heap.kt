@@ -5,7 +5,7 @@ import kotlin.math.ceil
 class Heap{
   companion object {
     fun constructHeapBottomUp(input :Array<Int>){
-      if (!isEssentiallyCompleteHeap(input)) throw IllegalArgumentException("Name required")
+      if (!isEssentiallyCompleteHeap(input)) throw IllegalArgumentException("Heap not essentially complete")
 
       // Using n determine if the input array could be a valid heap
       val n :Int = input.size
