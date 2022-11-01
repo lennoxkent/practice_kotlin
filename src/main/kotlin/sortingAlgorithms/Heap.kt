@@ -7,28 +7,27 @@ class Heap{
     fun constructHeapBottomUp(input :Array<Int>){
       if (!isEssentiallyCompleteHeap(input)) throw IllegalArgumentException("Heap not essentially complete")
 
-      // Using n determine if the input array could be a valid heap
       val n :Int = input.size
       val lastParentIndex: Int = floor(n/(2.toDouble())).toInt() -1 // -1: index from 0
 
       // Check if each of the parents is a heap.
       // Starting from the last parent to the root, ie bottom-up approach.
       for(i in lastParentIndex downTo 0 ){
-        var k :Int = i
-        val v :Int = input[k]
+        var currentParent :Int = i
+        val v :Int = input[currentParent]
         var isHeap :Boolean = false
 
-        while(isHeap.equals(false) && 2*k < n){
-          var j :Int = 2*k
-          if (j + 1 < n && input[j+1] > input[j])  j = j + 1
-          if (v > input[j]) {
+        while(isHeap.equals(false) && 2*currentParent < n){
+          var childIndex :Int = 2*currentParent
+          if (childIndex + 1 < n && input[childIndex+1] > input[childIndex])  childIndex = childIndex + 1
+          if (v > input[childIndex]) {
             isHeap = true
           }
           else {
-            input[k] = input[j]
-            k = j
+            input[currentParent] = input[childIndex]
+            currentParent = childIndex
           }
-          input[k] = v
+          input[currentParent] = v
         }
       }
     }
@@ -37,12 +36,6 @@ class Heap{
       val complete = log2((input.size + 1).toDouble())
       val essentiallyComplete =  log2((input.size + 2).toDouble())
       return ceil(complete) == floor(complete) || ceil(essentiallyComplete) == floor(essentiallyComplete)
-    }
-
-    fun swap(a :Int, b :Int, input :Array<Int>){
-      val temp :Int = input[a]
-      input[a] = input[b]
-      input[b] = temp
     }
   }
 }
